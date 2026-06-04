@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "build-octofit-app"
+      - "copilot/fix-check-step-work-job"
     paths:
       - "octofit-tracker/frontend/package.json"
       - "octofit-tracker/backend/package.json"
