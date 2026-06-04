@@ -1,18 +1,16 @@
 import express from 'express';
-import mongoose from 'mongoose';
+
+import { connectToDatabase } from './config/database';
 
 const app = express();
 const port = 8000;
-const mongoUri = process.env.MONGODB_URI ?? 'mongodb://localhost:27017/octofit_db';
-
 app.use(express.json());
 
 app.get('/api/health', (_req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-mongoose
-  .connect(mongoUri)
+connectToDatabase()
   .then(() => {
     app.listen(port, () => {
       console.log(`OctoFit backend running on http://localhost:${port}`);
